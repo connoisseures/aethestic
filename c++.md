@@ -4,13 +4,31 @@
 
 ### class
 
-[Can a c++ class include itself as a member?](https://stackoverflow.com/questions/2706129/can-a-c-class-include-itself-as-an-member)No, because the object would be infinitely large \(because every Node has as members two other Nodeobjects, which each have as members two other Node objects, which each... well, you get the point\).You can, however, have a pointer to the class type as a member variable:`class Node {    char *cargo;    Node* left;   // I'm not a Node; I'm just a pointer to a Node    Node* right;  // Same here};`  
+[Can a c++ class include itself as a member?](https://stackoverflow.com/questions/2706129/can-a-c-class-include-itself-as-an-member)No, because the object would be infinitely large \(because every Node has as members two other Nodeobjects, which each have as members two other Node objects, which each... well, you get the point\).You can, however, have a pointer to the class type as a member variable:
+
+```c++
+class Node {    
+    char *cargo;    
+    Node* left;   // I'm not a Node; I'm just a pointer to a Node    
+    Node* right;  // Same here
+};
+```  
 If a non-static object is member then declaration of class is incomplete and compiler has no way to find out size of the objects of the class.Static variables do not contribute to the size of objects. So no problem in calculating size with static variables of self type.For a compiler, all pointers have a fixed size irrespective of the data type they are pointing to, so no problem with this also.[https://www.geeksforgeeks.org/can-a-c-class-have-an-object-of-self-type/](https://www.geeksforgeeks.org/can-a-c-class-have-an-object-of-self-type/)  
 
 
 * this pointer 
 
-`class T{    int x;     void foo()    {        x = 6;       // same as this->x = 6;        this->x = 5; // explicit use of this->    }};`[https://en.cppreference.com/w/cpp/language/this](https://en.cppreference.com/w/cpp/language/this)  
+```c++
+class T{    
+    int x;     
+    void foo()    {        
+        x = 6;       // same as this->x = 6;        
+        this->x = 5; // explicit use of this->    
+        }
+};
+```
+
+[https://en.cppreference.com/w/cpp/language/this](https://en.cppreference.com/w/cpp/language/this)  
 
 
 ### static 
