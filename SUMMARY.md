@@ -1,4 +1,5 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Readme](README.md)
+* [the\_words](the_words.md)
 
